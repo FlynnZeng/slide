@@ -1,3 +1,9 @@
+import { gsap } from "gsap";
+import { CustomEase } from "gsap/CustomEase";
+import prevImg from '../img/prev.jpg'
+import activeImg from '../img/active.jpg'
+import nextImg from '../img/next.jpg'
+
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(CustomEase)
 
@@ -18,9 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let isAnimation = false
 
     const sliderContent = [
-        {name: '苍崖万仞', img: './img/prev.jpg'},
-        {name: '小石潭记', img: './img/active.jpg'},
-        {name: '遥看草色', img: './img/next.jpg'}
+        {name: '苍崖万仞', img: prevImg},
+        {name: '小石潭记', img: activeImg },
+        {name: '遥看草色', img: nextImg}
     ]
 
     const clipPath = {
@@ -32,6 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         prev: {left: '15%', rotation: -90},
         active: {left: '50%', rotation: 0},
         next: {left: '85%', rotation: 90},
+    }
+
+    function getFullUrl(uri){
+        return new URL(uri, import.meta.url).href
     }
 
     function splitTextIntoSpans(element) {
